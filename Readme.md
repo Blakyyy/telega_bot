@@ -1,39 +1,28 @@
-**Виселица**  – онлайн игра в слова. Игроку загадывается слово, которое он должны угадать, используя буквы алфавита и возможность совершить ограниченное количество ошибок. 
+Hangman - an online word game. The player is given a secret word to guess by using the letters of the alphabet and the ability to make a limited number of mistakes.
 
-В качестве подсказок указывается категория, к которой относится загаданное слово, и обозначенное звездочками (***) количество букв. Каждый неверный ответ достраивает "виселицу". Максимальное количество ошибок равно 9.
+As hints, the category to which the secret word belongs is provided, along with the number of letters in the word represented by asterisks (***). Each incorrect guess adds a part to the "hangman". The maximum number of mistakes allowed is 9.
 
-Программа состоит из нескольких модулей: 
+The program consists of several modules:
 
-***bot_viselnica***
+**bot_viselnica**
 
-содержит информацию о самом боте, а так же основные команды:
+This module contains information about the bot itself and the primary commands:
+-   `/hello` - greets the player
+-   `/topic` - suggests the category to which the secret word belongs
+-   `/game` - displays the number of asterisks (***), corresponding to the number of letters in the secret word, and prompts the player to enter a letter
+-   `/again` - restarts the game
+-   `/help` - provides help
 
-/hello - приветствует игрока
+**game**
 
-/topic - предлагает тему к которой относится загаданное слово
+One of the main modules, consisting of three parts:
 
-/game - показывает количество звездочек(***), соответсвующих количеству букв в загаданном слове и предлагает ввести букву
+-   `hidden_word_topic` - randomly selects the category to which the secret word belongs
+-   `word_choice` - randomly chooses a word from the suggested category and replaces the letters of the word with asterisks (***)
+-   `game` - replaces an asterisk (*) with a letter if the player's input is correct. In case of an incorrect guess, it displays an image adding a hangman part. After losing, it prompts to play again.
 
-/again - начать игру заново
+**guess_word**
 
-/help - помощь
+Creates a string for displaying intermediate results after guessing letters:
 
-
-***game***
-
-один из основных модулей, состоит з трех частей:
-
-- *hidden_word_topic* рандомно выбирает тему, к которой относится загаданное слово
-
-- *word_choise* рандомно выбирает слово из предложенной темы и заменяет буквы слова на звездочки(***);
-
-- *game* меняет звездочку (*) на букву, в случае если буква введенная игроком есть в загаданном слове. В случае неправильно ответа - выдает картинку с добавлением элемента виселицы. После проигрыша предлагает сыграть заново.
-
-***guess_word***
-
-Создает строку для отображения промежуточных результатов после отгадывания букв:
-
-    ***, **g, *og, dog
-
-
-
+***, **g, *og, dog
